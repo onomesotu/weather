@@ -1,0 +1,40 @@
+html, body {
+  margin: 0;
+  padding: 0; }
+
+body {
+  font: 100% "Inconsolata", monospace;
+  background-color: #2a3132; }
+
+.container {
+  max-width: 1200px; }
+
+#header h2 {
+  text-align: center;
+  font-size: 50px;
+  color: #000; }
+
+#header .search_form {
+  margin: 0 auto;
+  text-align: center; }
+
+#main {
+  background: url("../pictures/cloudysky.jpg") no-repeat center;
+  background-size: cover;
+  height: 80vh;
+  color: #fff; }
+  #main .weather_info {
+    width: 33%;
+    margin-top: 0.5rem;
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.3);
+    font-size: 2em;
+    padding: 2rem; }
+  #main h1 {
+    font-size: 5em; }
+  #main h3 {
+    font-weight: bolder; }
+
+#footer {
+  text-align: center;
+  font-size: 2em; }
