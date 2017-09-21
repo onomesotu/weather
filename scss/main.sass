@@ -3,6 +3,7 @@ $white: #fff;
 $black: #000;
 $yellow: #BB6614;
 $siteColor: #2a3132;
+$uiColor: #a29896;
 $rain: ('../pictures/rain.jpg');
 $snow: ('../pictures/snow.jpg');
 $thunderstorm: ('../pictures/thunderstorm.jpg');
@@ -10,6 +11,7 @@ $snowfall: ('../pictures/snowfall.jpg');
 $clearsky: ('../pictures/clearsky.jpg');
 $cloudy: ('../pictures/cloudy.jpg');
 $cloudySky: ('../pictures/cloudysky.jpg');
+
 
 
 html, body,
@@ -35,7 +37,7 @@ body
 		text-align: center;
 
 #main 
-	background: url($cloudySky) no-repeat center;
+	background: url($snowfall) no-repeat center;
 	background-size: cover;
 	height: 80vh;
 	color: $white;
@@ -54,6 +56,15 @@ body
 
 	h3
 		font-weight: bolder;
+		
+.ui-autocomplete
+	background: rgba(0,0,0,0.3);
+	opacity: 1; 
+	color: $white;
+	list-style-type: none;
+	font-size: 16px;
+	width: 100px;
+	padding: 2px 5px 0;
 
 #footer
 	text-align: center;

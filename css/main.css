@@ -19,7 +19,7 @@ body {
   text-align: center; }
 
 #main {
-  background: url("../pictures/cloudysky.jpg") no-repeat center;
+  background: url("../pictures/snowfall.jpg") no-repeat center;
   background-size: cover;
   height: 80vh;
   color: #fff; }
@@ -34,6 +34,15 @@ body {
     font-size: 5em; }
   #main h3 {
     font-weight: bolder; }
+
+.ui-autocomplete {
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  color: #fff;
+  list-style-type: none;
+  font-size: 16px;
+  width: 100px;
+  padding: 2px 5px 0; }
 
 #footer {
   text-align: center;
