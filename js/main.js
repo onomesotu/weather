@@ -34,8 +34,9 @@ var main = function(){
 			'Dushanbe','Dodoma','Bangkok','Lome','Port of Spain','Tunis','Ankara',
 			'Ashgabat','Kampala','Kiev','Abu Dhabi','London',
 			'Washington DC','Montevideo','Tashkent','Port Vila',
-			'Vatican City','Caracas','Hanoi','Cardiff','Sanaa','Lusaka','Harare'];
+			'Vatican City','Caracas','Hanoi','Cardiff','Sanaa','Lusaka','Harare','Lagos'].sort();
 
+		//availableCities = availableCities.sort();
 		$("#search").autocomplete({
 			source: availableCities
 		});
@@ -47,7 +48,7 @@ var main = function(){
 	to the respective HTML elements
 	*/
 
-	/****Bakcground picture function*****/
+	/****Background picture function*****/
 	/*Function to call that changes the background
 	picture depending on the weather condition
 	*/
@@ -63,6 +64,20 @@ var main = function(){
 	/*
 	On search, make an api call for the selected city
 	*/
+	var getWeather = function(){
+		//get the value of the search form
+		var city = $('#search').val();
+		var openWeatherAPI = 'http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=b24f5a1046585cfcd7ab26e64c0516bc';
+		if(city === '')
+			$('.city').html('<h2 class="city_error">You forgot to enter a city<h2>');
+		else
+			$('.city').html('<h2 class="loading">Loading weather data....<h2>');
+			$.getJSON(openWeatherAPI, function(json) {
+			console.log(json);
+		});
+	}
+	$("#searchButton").click(getWeather);
+
 
 	//GET LOCATION
 	/*When the get location button is clicked,
