@@ -64,10 +64,10 @@ var main = function(){
 	/*
 	On search, make an api call for the selected city
 	*/
-	var getWeather = function(){
+	function getWeather(){
 		//get the value of the search form
 		var city = $('#search').val();
-		var openWeatherAPI = 'http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID=b24f5a1046585cfcd7ab26e64c0516bc';
+		var openWeatherAPI = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=b24f5a1046585cfcd7ab26e64c0516bc';
 		if(city === '')
 			$('.city').html('<h2 class="city_error">You forgot to enter a city<h2>');
 		else
@@ -76,7 +76,9 @@ var main = function(){
 			console.log(json);
 		});
 	}
-	$("#searchButton").click(getWeather);
+	$("#searchButton").on('click',function(){
+		getWeather();
+	});
 
 
 	//GET LOCATION
