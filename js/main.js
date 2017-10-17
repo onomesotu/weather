@@ -73,8 +73,8 @@ var main = function(){
 		else
 			$('.city').html('<h2 class="loading">Loading weather data....<h2>');
 			$.getJSON(openWeatherAPI, function(json) {
-			console.log(json);
-		});
+				console.log(json);
+			});
 	}
 	$("#searchButton").on('click',function(){
 		getWeather();
@@ -86,6 +86,27 @@ var main = function(){
 	Get user longitude and latitude and 
 	pass it to the api call
 	*/
+	
+	var coordinates = [];
+  	function getLocation() {
+  		if (navigator.geolocation) {
+    		navigator.geolocation.getCurrentPosition(function(position) {
+    			coordinates.push(position.coords.latitude, position.coords.longitude);
+  			});
+  			console.log(coordinates);
+  		}
+	}
+
+	$('.get_location').click(function(){
+		getLocation();
+		var freeCodeCampAPI = 'https://fcc-weather-api.glitch.me/api/current?lat=' + coordinates[0] + '&lon=' + coordinates[1];
+		//var openWeatherAPIcoords = 'http://api.openweathermap.org/data/2.5/weather?lat=' 
+			//+ coordinates[0] + '&lon=' + coordinates[1] + '&APPID=b24f5a1046585cfcd7ab26e64c0516bc';
+		$.getJSON(freeCodeCampAPI, function(json){
+			console.log(json);
+		});
+	});
+
 }
 
 $(document).ready(main);
