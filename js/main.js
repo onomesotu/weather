@@ -84,40 +84,29 @@ var main = function(){
 	Get user longitude and latitude and 
 	pass it to the api call
 	*/
-	
-	var lat, lon;
   	function getLocation() {
+  		var lat, lon;
   		if (navigator.geolocation) {
     		navigator.geolocation.getCurrentPosition(function(position) {
     			lat = position.coords.latitude;
     			lon = position.coords.longitude;
+    			var freeCodeCampAPI = 'https://fcc-weather-api.glitch.me/api/current?lat=' + lat + '&lon=' + lon;
+	  			$.ajax({
+					url: freeCodeCampAPI, 
+					dataType: 'json',
+					crossDomain: true,  
+					success: function(json){
+						console.log(json);
+					},
+					error: function(){
+						console.log('Did not connect');
+					},
+					method: 'GET'
+				});
   			});
-  			console.log(lat, lon);
   		}
 	}
-
-	$('.get_location').click(function(){
-		//getLocation();
-		var freeCodeCampAPI = 'https://fcc-weather-api.glitch.me/api/current?lat=' + lat + '&lon=' + lon;
-		//var openWeatherAPIcoords = 'http://api.openweathermap.org/data/2.5/weather?lat=' 
-			//+ coordinates[0] + '&lon=' + coordinates[1] + '&APPID=b24f5a1046585cfcd7ab26e64c0516bc';
-		//$.getJSON(freeCodeCampAPI, function(json){
-			//console.log(json);
-		//});
-		$.ajax({
-			url: freeCodeCampAPI, 
-			dataType: 'json',
-			beforeSend: getLocation,
-			crossDomain: true,  
-			success: function(json){
-				console.log(json);
-			},
-			error: function(){
-				console.log('Did not connect');
-			},
-			method: 'GET'
-		});
-	});
+	$('.get_location').on('click', getLocation);
 
 }
 
