@@ -10,7 +10,7 @@ var main = function(){
 			'Praia','Bangui','Santiago','Beijing','Bogota','Moroni','Kinshasa','Brazzaville','San Jose',
 			'Yamoussoukro','Zagreb','Havana','Nicosia','Prague','Copenhagen',
 			'Djibouti','Roseau','Santo Domingo','Dili','Quito','Cairo',
-			'San Salvador','London','Malabo','Asmara','Tallinn','Addis Ababa',
+			'San Salvador','Malabo','Asmara','Tallinn','Addis Ababa',
 			'Palikir','Suva','Helsinki','Paris','Cayenne','Libreville',
 			'Banjul','Tbilisi','Berlin','Accra','Athens','Saint George',
 			'Guatemala City','Conakry','Bissau','Georgetown','Port au Prince','Tegucigalpa',
@@ -47,7 +47,47 @@ var main = function(){
 	Function that parses the data from JSON format
 	to the respective HTML elements
 	*/
+	function parseJsonToHtml(json){
+		var kelvin = 273.15,
+			cityName = json.name,
+			weather = json.weather[0]['main'],
+			description = json.weather[0]['description'],
+			temperature = Math.ceil(json.main['temp'] - kelvin),
+			humidity = json.main['humidity'],
+			pressure = json.main['pressure'],
+			windSpeed = json.wind['speed'],
+			sunrise = json.sys['sunrise'],
+			sunset = json.sys['sunset'];
+	
+		var degree = '<h1>' + temperature + '<span>&deg;C</span></h1>',
+			weather_description = weather + '. ' + description,
+			wind = '<p>Wind speed: ' + windSpeed + 'm/s</p>',
+			humidityValue = '<p>Humidity: ' + humidity + '&#37;</p>',
+			pressureValue = '<p>Pressure: ' + pressure + 'hPa</p>';
+			sun_rise = '<p>Sunrise: ' + convertUnixTime(sunrise); + '</p>',
+			sun_set = '<p>Sunset: ' + convertUnixTime(sunset); + '</p>';
 
+		$('.city').html(cityName);
+		$('.description').html(weather_description);
+		$('.int').remove();//remove the preset start page if API call was successful
+		$('.weather_main').append(degree);
+		$('.weather_info').append(wind, pressureValue, humidityValue, sun_rise, sun_set);
+	}
+
+	/**Function that converts API unix time to local time**/
+	function convertUnixTime(time){
+		var date = new Date(time*1000);
+		// Hours part from the timestamp
+		var hours = date.getHours();
+		// Minutes part from the timestamp
+		var minutes = "0" + date.getMinutes();
+		// Seconds part from the timestamp
+		var seconds = "0" + date.getSeconds();
+		// Will display time in 10:30:23 format
+		var finalTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+
+		return finalTime;
+	}
 	/****Background picture function*****/
 	/*Function to call that changes the background
 	picture depending on the weather condition
@@ -58,7 +98,8 @@ var main = function(){
 	/*When document is ready, make an api call
 	to get weather for helsinki. 
 	*/
-
+	var openWeatherAPI = 'http://api.openweathermap.org/data/2.5/weather?q=Helsinki&APPID=b24f5a1046585cfcd7ab26e64c0516bc';
+	$.getJSON(openWeatherAPI, parseJsonToHtml);
 
 	//API CALL FOR CITY SEARCH
 	/*
@@ -67,7 +108,7 @@ var main = function(){
 	function getWeather(){
 		//get the value of the search form
 		var city = $('#search').val();
-		var openWeatherAPI = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=b24f5a1046585cfcd7ab26e64c0516bc';
+		openWeatherAPI = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=b24f5a1046585cfcd7ab26e64c0516bc';
 		if(city === '')
 			$('.city').html('<h2 class="city_error">You forgot to enter a city<h2>');
 		else
@@ -85,11 +126,10 @@ var main = function(){
 	pass it to the api call
 	*/
   	function getLocation() {
-  		var lat, lon;
   		if (navigator.geolocation) {
     		navigator.geolocation.getCurrentPosition(function(position) {
-    			lat = position.coords.latitude;
-    			lon = position.coords.longitude;
+    			var lat = position.coords.latitude;
+    			var lon = position.coords.longitude;
     			var freeCodeCampAPI = 'https://fcc-weather-api.glitch.me/api/current?lat=' + lat + '&lon=' + lon;
 	  			$.ajax({
 					url: freeCodeCampAPI, 
