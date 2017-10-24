@@ -69,9 +69,12 @@ var main = function(){
 
 		$('.city').html(cityName);
 		$('.description').html(weather_description);
-		$('.int').remove();//remove the preset start page if API call was successful
-		$('.weather_main').append(degree);
-		$('.weather_info').append(wind, pressureValue, humidityValue, sun_rise, sun_set);
+		$('.degree').html(degree);
+		$('.wind').html(wind);
+		$('.pressure').html(pressureValue);
+		$('.humidity').html(humidityValue);
+		$('.sunrise').html(sun_rise);
+		$('.sunset').html(sun_set);
 	}
 
 	/**Function that converts API unix time to local time**/
@@ -113,11 +116,9 @@ var main = function(){
 			$('.city').html('<h2 class="city_error">You forgot to enter a city<h2>');
 		else
 			$('.city').html('<h2 class="loading">Loading weather data....<h2>');
-			$.getJSON(openWeatherAPI, function(json) {
-				console.log(json);
-			});
+			$.getJSON(openWeatherAPI, parseJsonToHtml);
 	}
-	$("#searchButton").on('click',getWeather);
+	$('#header').on('click','#searchButton', getWeather);
 
 
 	//GET LOCATION
@@ -130,23 +131,22 @@ var main = function(){
     		navigator.geolocation.getCurrentPosition(function(position) {
     			var lat = position.coords.latitude;
     			var lon = position.coords.longitude;
-    			var freeCodeCampAPI = 'https://fcc-weather-api.glitch.me/api/current?lat=' + lat + '&lon=' + lon;
+    			var openWeatherAPI = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon +'&APPID=b24f5a1046585cfcd7ab26e64c0516bc';
 	  			$.ajax({
-					url: freeCodeCampAPI, 
+					url: openWeatherAPI, 
 					dataType: 'json',
 					crossDomain: true,  
-					success: function(json){
-						console.log(json);
-					},
+					success: parseJsonToHtml,
 					error: function(){
 						console.log('Did not connect');
 					},
 					method: 'GET'
 				});
+				//$.getJSON(openWeatherAPI, parseJsonToHtml);
   			});
   		}
 	}
-	$('.get_location').on('click', getLocation);
+	$('#header').on('click', '.get_location', getLocation);
 
 }
 
