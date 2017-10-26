@@ -19,17 +19,19 @@ body {
   text-align: center; }
 
 #main {
-  background: url("../pictures/snow.jpg") no-repeat center;
+  background: url("../pictures/Snow.jpg") no-repeat center;
   background-size: cover;
   height: 80vh;
   color: #fff; }
   #main .weather_info {
     width: 33%;
-    margin-top: 0.5rem;
+    margin-top: 2em;
     opacity: 1;
     background: rgba(0, 0, 0, 0.3);
     font-size: 2em;
     padding: 2rem; }
+  #main .city {
+    margin-top: 1em; }
   #main h1 {
     font-size: 5em; }
   #main h3 {
