@@ -58,15 +58,27 @@ var main = function(){
 			windSpeed = json.wind['speed'],
 			sunrise = json.sys['sunrise'],
 			sunset = json.sys['sunset'];
-	
+		
+		
+		$('#main').css({
+			'background':'url(../pictures/' + weather + '.jpg)', 
+			'background-repeat': 'no-repeat',
+			'background-position': 'center',
+			'background-size': 'cover',
+			'height': '80vh',
+			'color': '#fff'
+		});
+			
+
 		var degree = '<h1>' + temperature + '<span>&deg;C</span></h1>',
-			weather_description = weather + '. ' + description,
+			weather_description = weather + ', ' + description,
 			wind = '<p>Wind speed: ' + windSpeed + 'm/s</p>',
 			humidityValue = '<p>Humidity: ' + humidity + '&#37;</p>',
 			pressureValue = '<p>Pressure: ' + pressure + 'hPa</p>';
 			sun_rise = '<p>Sunrise: ' + convertUnixTime(sunrise); + '</p>',
 			sun_set = '<p>Sunset: ' + convertUnixTime(sunset); + '</p>';
-
+	
+			
 		$('.city').html(cityName);
 		$('.description').html(weather_description);
 		$('.degree').html(degree);
