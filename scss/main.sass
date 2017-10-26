@@ -4,13 +4,14 @@ $black: #000;
 $yellow: #BB6614;
 $siteColor: #2a3132;
 $uiColor: #a29896;
-$rain: ('../pictures/rain.jpg');
-$snow: ('../pictures/snow.jpg');
-$thunderstorm: ('../pictures/thunderstorm.jpg');
-$snowfall: ('../pictures/snowfall.jpg');
-$clearsky: ('../pictures/clearsky.jpg');
-$cloudy: ('../pictures/cloudy.jpg');
-$cloudySky: ('../pictures/cloudysky.jpg');
+$rain: ('../pictures/Rain.jpg');
+$snow: ('../pictures/Snow.jpg');
+$thunderstorm: ('../pictures/Thunderstorm.jpg');
+$snowfall: ('../pictures/Snow.jpg');
+$clearsky: ('../pictures/Clear.jpg');
+$cloudy: ('../pictures/Clouds.jpg');
+$drizzle: ('../pictures/Drizzle.jpg');
+$extreme: ('../pictures/Extreme.jpg');
 
 
 
@@ -35,7 +36,9 @@ body
 	.search_form 
 		margin: 0 auto; 
 		text-align: center;
-
+	
+	button 
+		
 #main 
 	background: url($snow) no-repeat center;
 	background-size: cover;
@@ -45,12 +48,15 @@ body
 	
 	.weather_info
 		width: 33%;
-		margin-top: 0.5rem;
+		margin-top: 2em;
 		opacity: 1;
 		background: rgba(0,0,0,0.3);
 		font-size: 2em;
 		padding: 2rem;
 	
+	.city
+		margin-top: 1em 
+
 	h1
 		font-size: 5em;
 
