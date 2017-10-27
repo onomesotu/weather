@@ -4,19 +4,24 @@ html, body {
 
 body {
   font: 100% "Inconsolata", monospace;
-  background-color: #2a3132; }
+  background-color: #fff; }
 
 .container {
   max-width: 1200px; }
 
-#header h2 {
-  text-align: center;
-  font-size: 50px;
-  color: #000; }
-
-#header .search_form {
-  margin: 0 auto;
-  text-align: center; }
+#header {
+  margin-bottom: 10px; }
+  #header h2 {
+    text-align: center;
+    font-size: 50px;
+    color: #000; }
+  #header .search_form {
+    margin: 0 auto;
+    text-align: center; }
+  #header button {
+    width: 120px; }
+  #header .get_location {
+    width: 300px; }
 
 #main {
   background: url("../pictures/Snow.jpg") no-repeat center;
