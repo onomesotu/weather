@@ -59,7 +59,6 @@ var main = function(){
 			sunrise = json.sys['sunrise'],
 			sunset = json.sys['sunset'];
 		
-		
 		$('#main').css({
 			'background':'url(../pictures/' + weather + '.jpg)', 
 			'background-repeat': 'no-repeat',
@@ -87,6 +86,7 @@ var main = function(){
 		$('.humidity').html(humidityValue);
 		$('.sunrise').html(sun_rise);
 		$('.sunset').html(sun_set);
+
 	}
 
 	/**Function that converts API unix time to local time**/
@@ -103,6 +103,12 @@ var main = function(){
 
 		return finalTime;
 	}
+
+	/**Function that converts temperature in celcius to fahrenheit**/
+	function CelsiusToFahrenheit(temperature){
+
+	}
+
 	/****Background picture function*****/
 	/*Function to call that changes the background
 	picture depending on the weather condition
@@ -113,24 +119,26 @@ var main = function(){
 	/*When document is ready, make an api call
 	to get weather for helsinki. 
 	*/
-	var openWeatherAPI = 'http://api.openweathermap.org/data/2.5/weather?q=Helsinki&APPID=b24f5a1046585cfcd7ab26e64c0516bc';
+	var openWeatherAPI = 'https://api.openweathermap.org/data/2.5/weather?q=Helsinki&APPID=b24f5a1046585cfcd7ab26e64c0516bc';
 	$.getJSON(openWeatherAPI, parseJsonToHtml);
 
 	//API CALL FOR CITY SEARCH
 	/*
 	On search, make an api call for the selected city
 	*/
-	function getWeather(){
+	function getWeather(e){
 		//get the value of the search form
+		e.preventDefault();
 		var city = $('#search').val();
-		openWeatherAPI = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=b24f5a1046585cfcd7ab26e64c0516bc';
+		openWeatherAPI = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=b24f5a1046585cfcd7ab26e64c0516bc';
 		if(city === '')
 			$('.city').html('<h2 class="city_error">You forgot to enter a city<h2>');
 		else
 			$('.city').html('<h2 class="loading">Loading weather data....<h2>');
 			$.getJSON(openWeatherAPI, parseJsonToHtml);
+
 	}
-	$('#header').on('click','#searchButton', getWeather);
+	$('#searchButton').on('click', getWeather);
 
 
 	//GET LOCATION
@@ -143,7 +151,7 @@ var main = function(){
     		navigator.geolocation.getCurrentPosition(function(position) {
     			var lat = position.coords.latitude;
     			var lon = position.coords.longitude;
-    			var openWeatherAPI = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon +'&APPID=b24f5a1046585cfcd7ab26e64c0516bc';
+    			var openWeatherAPI = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon +'&APPID=b24f5a1046585cfcd7ab26e64c0516bc';
 	  			$.ajax({
 					url: openWeatherAPI, 
 					dataType: 'json',
@@ -154,7 +162,6 @@ var main = function(){
 					},
 					method: 'GET'
 				});
-				//$.getJSON(openWeatherAPI, parseJsonToHtml);
   			});
   		}
 	}
