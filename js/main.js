@@ -50,6 +50,7 @@ var main = function(){
 	function parseJsonToHtml(json){
 		var kelvin = 273.15,
 			cityName = json.name,
+			country = json.sys['country'],
 			weather = json.weather[0]['main'],
 			description = json.weather[0]['description'],
 			temperature = Math.ceil(json.main['temp'] - kelvin),
@@ -78,7 +79,7 @@ var main = function(){
 			sun_set = '<p>Sunset: ' + convertUnixTime(sunset); + '</p>';
 	
 			
-		$('.city').html(cityName);
+		$('.city').html(cityName + ', ' + country);
 		$('.description').html(weather_description);
 		$('.degree').html(degree);
 		$('.wind').html(wind);
