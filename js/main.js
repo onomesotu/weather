@@ -1,46 +1,47 @@
 var main = function(){
 	/****jQuery Autocomplete***/
 	/*Insert jQuery autocomplete UI*/
-		var availableCities = ['Kabul','Tirana','Algiers',
-			'Jordan','Andorra la Vella','Luanda','Buenos Aires','Yerevan',
-			'Canberra','Vienna','Nassau','Manama','Azerbaijan','Dhaka','Bridgetown',
-			'Minsk','Brussels','Belmopan','Porto Novo','Switzerland','Thimphu',
-			'La Paz','Sarajevo','Gaborone','Brasilia','Bandar Seri Begawan',
-			'Sofia','Ouagadougou','Bujumbura','Phnom Penh','Yaounde','Ottawa',
-			'Praia','Bangui','Santiago','Beijing','Bogota','Moroni','Kinshasa','Brazzaville','San Jose',
-			'Yamoussoukro','Zagreb','Havana','Nicosia','Prague','Copenhagen',
-			'Djibouti','Roseau','Santo Domingo','Dili','Quito','Cairo',
-			'San Salvador','Malabo','Asmara','Tallinn','Addis Ababa',
-			'Palikir','Suva','Helsinki','Paris','Cayenne','Libreville',
-			'Banjul','Tbilisi','Berlin','Accra','Athens','Saint George',
-			'Guatemala City','Conakry','Bissau','Georgetown','Port au Prince','Tegucigalpa',
-			'Budapest','Reykjavik','New Delhi','Jakarta','Tehran','Baghdad',
-			'Dublin','Tel Aviv','Rome','Kingston','Tokyo','Astana','Nairobi',
-			'Tarawa Atoll','Pristina','Kuwait City',
-			'Bishkek','Vientiane','Riga','Beirut','Maseru','Monrovia',
-			'Tripoli','Vaduz','Vilnius','Luxembourg','Skopje','Antananarivo',
-			'Lilongwe','Kuala Lumpur','Male','Bamako','Valletta','Majuro',
-			'Nouakchott','Port Louis','Mexico City','Chisinau','Monaco',
-			'Ulaanbaatar','Podgorica','Rabat','Maputo','Burma','Windhoek',
-			'Nauru','Kathmandu','Amsterdam','Wellington',
-			'Managua','Niamey','Abuja','Pyongyang','Belfast','Oslo',
-			'Muscat','Islamabad','Melekeok','Panama City','Port Moresby','Asuncion',
-			'Lima','Manila','Warsaw','Lisbon','Doha','Bucharest',
-			'Moscow','Kigali','Basseterre','Castries','Kingstown','Apia',
-			'San Marino','Sao Tome','Riyadh','Edinburgh','Dakar','Belgrade',
-			'Victoria','Freetown','Singapore','Bratislava','Ljubljana','Honiara',
-			'Mogadishu','Pretoria','Seoul','Juba','Madrid','Colombo',
-			'Khartoum','Paramaribo','Mbabana','Stockholm','Damascus','Taipei',
-			'Dushanbe','Dodoma','Bangkok','Lome','Port of Spain','Tunis','Ankara',
-			'Ashgabat','Kampala','Kiev','Abu Dhabi','London',
-			'Washington DC','Montevideo','Tashkent','Port Vila',
-			'Vatican City','Caracas','Hanoi','Cardiff','Sanaa','Lusaka','Harare','Lagos'].sort();
+	var availableCities = ['Kabul','Tirana','Algiers',
+		'Jordan','Andorra la Vella','Luanda','Buenos Aires','Yerevan',
+		'Canberra','Vienna','Nassau','Manama','Azerbaijan','Dhaka','Bridgetown',
+		'Minsk','Brussels','Belmopan','Porto Novo','Switzerland','Thimphu',
+		'La Paz','Sarajevo','Gaborone','Brasilia','Bandar Seri Begawan',
+		'Sofia','Ouagadougou','Bujumbura','Phnom Penh','Yaounde','Ottawa',
+		'Praia','Bangui','Santiago','Beijing','Bogota','Moroni','Kinshasa','Brazzaville','San Jose',
+		'Yamoussoukro','Zagreb','Havana','Nicosia','Prague','Copenhagen',
+		'Djibouti','Roseau','Santo Domingo','Dili','Quito','Cairo',
+		'San Salvador','Malabo','Asmara','Tallinn','Addis Ababa',
+		'Palikir','Suva','Helsinki','Paris','Cayenne','Libreville',
+		'Banjul','Tbilisi','Berlin','Accra','Athens','Saint George',
+		'Guatemala City','Conakry','Bissau','Georgetown','Port au Prince','Tegucigalpa',
+		'Budapest','Reykjavik','New Delhi','Jakarta','Tehran','Baghdad',
+		'Dublin','Tel Aviv','Rome','Kingston','Tokyo','Astana','Nairobi',
+		'Tarawa Atoll','Pristina','Kuwait City',
+		'Bishkek','Vientiane','Riga','Beirut','Maseru','Monrovia',
+		'Tripoli','Vaduz','Vilnius','Luxembourg','Skopje','Antananarivo',
+		'Lilongwe','Kuala Lumpur','Male','Bamako','Valletta','Majuro',
+		'Nouakchott','Port Louis','Mexico City','Chisinau','Monaco',
+		'Ulaanbaatar','Podgorica','Rabat','Maputo','Burma','Windhoek',
+		'Nauru','Kathmandu','Amsterdam','Wellington',
+		'Managua','Niamey','Abuja','Pyongyang','Belfast','Oslo',
+		'Muscat','Islamabad','Melekeok','Panama City','Port Moresby','Asuncion',
+		'Lima','Manila','Warsaw','Lisbon','Doha','Bucharest',
+		'Moscow','Kigali','Basseterre','Castries','Kingstown','Apia',
+		'San Marino','Sao Tome','Riyadh','Edinburgh','Dakar','Belgrade',
+		'Victoria','Freetown','Singapore','Bratislava','Ljubljana','Honiara',
+		'Mogadishu','Pretoria','Seoul','Juba','Madrid','Colombo',
+		'Khartoum','Paramaribo','Mbabana','Stockholm','Damascus','Taipei',
+		'Dushanbe','Dodoma','Bangkok','Lome','Port of Spain','Tunis','Ankara',
+		'Ashgabat','Kampala','Kiev','Abu Dhabi','London',
+		'Washington DC','Montevideo','Tashkent','Port Vila',
+		'Vatican City','Caracas','Hanoi','Cardiff','Sanaa','Lusaka','Harare','Lagos'].sort();
 
-		//availableCities = availableCities.sort();
-		$("#search").autocomplete({
-			source: availableCities
-		});
-	
+	//availableCities = availableCities.sort();
+	$("#search").autocomplete({
+		source: availableCities
+	});
+	$('#searchButton').on('click', getWeather);
+	$('#header').on('click', '.get_location', getLocation);
 
 	/**Parsing JSON data to HTML**/
 	/*
@@ -110,11 +111,6 @@ var main = function(){
 
 	}
 
-	/****Background picture function*****/
-	/*Function to call that changes the background
-	picture depending on the weather condition
-	*/
-
 	/****API CALLS******/
 	//Preset API CALL
 	/*When document is ready, make an api call
@@ -135,39 +131,44 @@ var main = function(){
 		if(city === '')
 			$('.city').html('<h2 class="city_error">You forgot to enter a city<h2>');
 		else
-			$('.city').html('<h2 class="loading">Loading weather data....<h2>');
-			$.getJSON(openWeatherAPI, parseJsonToHtml);
-
+			//delay the API call for 2 seconds, replace the city name with a font awesome
+			//loader and the make the JSON API call after 2 seconds
+			var load = '<i style="font-size: 1em;" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span>';
+			setTimeout(function(){
+				$.getJSON(openWeatherAPI, parseJsonToHtml);
+			}, 2000);	
+			$('.city').html(load);
 	}
-	$('#searchButton').on('click', getWeather);
-
+	
 
 	//GET LOCATION
 	/*When the get location button is clicked,
 	Get user longitude and latitude and 
 	pass it to the api call
 	*/
-  	function getLocation() {
+  	function getLocation(){
   		if (navigator.geolocation) {
     		navigator.geolocation.getCurrentPosition(function(position) {
     			var lat = position.coords.latitude;
     			var lon = position.coords.longitude;
+    			var load = '<i style="font-size: 1em;" class="fa fa-spinner fa-pulse fa-2x fa-fw"></i><span class="sr-only">Loading...</span>';
     			var openWeatherAPI = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon +'&APPID=b24f5a1046585cfcd7ab26e64c0516bc';
-	  			$.ajax({
-					url: openWeatherAPI, 
-					dataType: 'json',
-					crossDomain: true,  
-					success: parseJsonToHtml,
-					error: function(){
-						console.log('Did not connect');
-					},
-					method: 'GET'
-				});
+    			setTimeout(function(){
+    				$.ajax({
+						url: openWeatherAPI, 
+						dataType: 'json',
+						crossDomain: true,  
+						success: parseJsonToHtml,
+						error: function(){
+							console.log('Did not connect');
+						},
+						method: 'GET'
+					});
+				}, 2000);
+				$('.city').html(load);  			
   			});
   		}
 	}
-	$('#header').on('click', '.get_location', getLocation);
-
 }
 
 $(document).ready(main);

@@ -44,9 +44,10 @@ body
 
 	#search
 		height: 45px;
-		&::placeholder 
+		&:focus 
 			color: $placeholder;
 			font-weight: bold;
+			
 	
 	.btn 
 		width: 120px;
@@ -58,13 +59,21 @@ body
 	
 	.get_location
 		width: 300px;
+
 #main 
 	background: url($snow) no-repeat center;
 	background-size: cover;
 	height: 80vh;
 	color: $white;
 
-	
+	.weather_main
+		width: 40%;
+		margin-top: 5em;
+		opacity: 1;
+		background: rgba(0,0,0,0.3);
+		padding: 2em;
+		border-radius: 5px;
+		font-weight: bold;
 	
 	.weather_info
 		width: 33%;
@@ -75,16 +84,17 @@ body
 		padding: 2em;
 		border-radius: 5px;
 		font-weight: bold;
+		float: right;
 	
 	.city
-		margin-top: 1em 
+		//margin-top: 1em 
 
 	h1
 		font-size: 5em;
 		font-weight: bold;
 
 	h3
-		font-weight: bolder;
+		font-weight: bold;
 		
 .ui-autocomplete
 	background: rgba(0,0,0,0.3);

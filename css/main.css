@@ -22,7 +22,7 @@ body {
     text-align: center; }
   #header #search {
     height: 45px; }
-    #header #search::placeholder {
+    #header #search:focus {
       color: #66AFE9;
       font-weight: bold; }
   #header .btn {
@@ -40,6 +40,14 @@ body {
   background-size: cover;
   height: 80vh;
   color: #fff; }
+  #main .weather_main {
+    width: 40%;
+    margin-top: 5em;
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2em;
+    border-radius: 5px;
+    font-weight: bold; }
   #main .weather_info {
     width: 33%;
     margin-top: 2em;
@@ -48,14 +56,13 @@ body {
     font-size: 2em;
     padding: 2em;
     border-radius: 5px;
-    font-weight: bold; }
-  #main .city {
-    margin-top: 1em; }
+    font-weight: bold;
+    float: right; }
   #main h1 {
     font-size: 5em;
     font-weight: bold; }
   #main h3 {
-    font-weight: bolder; }
+    font-weight: bold; }
 
 .ui-autocomplete {
   background: rgba(0, 0, 0, 0.3);
