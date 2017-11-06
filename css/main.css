@@ -38,7 +38,6 @@ body {
 #main {
   background: url("../pictures/Snow.jpg") no-repeat center;
   background-size: cover;
-  height: 80vh;
   color: #fff; }
   #main .weather_main {
     width: 40%;
