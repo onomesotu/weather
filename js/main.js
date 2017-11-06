@@ -43,6 +43,18 @@ var main = function(){
 	$('#searchButton').on('click', getWeather);
 	$('#header').on('click', '.get_location', getLocation);
 
+	$('.temperatureUnit').on('click', function(e){
+		e.preventDefault();
+		var temperatureUnit = $('.degree .unit').text();
+		if(temperatureUnit === 'C'){
+			$('.unit').html('F');
+			$('.temp').html(celsiusToFahrenheit());
+		}else if(temperatureUnit === 'F'){
+			$('.unit').html('C');
+			$('.temp').html(fahrenheitToCelcius());
+		}
+	});
+
 	/**Parsing JSON data to HTML**/
 	/*
 	Function that parses the data from JSON format
@@ -71,7 +83,7 @@ var main = function(){
 		});
 			
 
-		var degree = '<h1>' + temperature + '<span>&deg;C</span></h1>',
+		var degree = '<h1><span class="temp">' + temperature + '</span>&deg;<span class="unit">C</span></h1>',
 			weather_description = weather + ', ' + description,
 			wind = '<p>Wind speed: ' + windSpeed + 'm/s</p>',
 			humidityValue = '<p>Humidity: ' + humidity + '&#37;</p>',
@@ -91,6 +103,12 @@ var main = function(){
 
 	}
 
+	/*Function to parse if there is a server error*/
+	function jsonError(){
+		var errorStatement = '<h2>Server Error<br />Try Again Later</h2>';
+		$('.city').html(errorStatement);
+	}
+
 	/**Function that converts API unix time to local time**/
 	function convertUnixTime(time){
 		var date = new Date(time*1000);
@@ -102,14 +120,22 @@ var main = function(){
 		var seconds = "0" + date.getSeconds();
 		// Will display time in 10:30:23 format
 		var finalTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-
 		return finalTime;
 	}
 
 	/**Function that converts temperature in celcius to fahrenheit**/
-	function CelsiusToFahrenheit(temperature){
+	function celsiusToFahrenheit(){
+		var temperatureInCelsius = $('.temp').text();
+		var temperatureInFahrenheit = Math.floor((temperatureInCelsius * 9/5) + 32);
+		return temperatureInFahrenheit;
+	};
 
-	}
+	function fahrenheitToCelcius(){
+		var temperatureInFahrenheit = $('.temp').text();
+		var temperatureInCelsius = Math.floor((temperatureInFahrenheit - 32) * 5/9);
+		return temperatureInCelsius;
+	};
+
 
 	/****API CALLS******/
 	//Preset API CALL
@@ -159,9 +185,7 @@ var main = function(){
 						dataType: 'json',
 						crossDomain: true,  
 						success: parseJsonToHtml,
-						error: function(){
-							console.log('Did not connect');
-						},
+						error: jsonError,
 						method: 'GET'
 					});
 				}, 2000);
