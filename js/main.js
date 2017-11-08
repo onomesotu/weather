@@ -66,20 +66,19 @@ var main = function(){
 			country = json.sys['country'],
 			weather = json.weather[0]['main'],
 			description = json.weather[0]['description'],
-			temperature = Math.ceil(json.main['temp'] - kelvin),
+			temperature = Math.round(json.main['temp'] - kelvin),
 			humidity = json.main['humidity'],
 			pressure = json.main['pressure'],
 			windSpeed = json.wind['speed'],
 			sunrise = json.sys['sunrise'],
 			sunset = json.sys['sunset'];
 		
-		$('#main').css({
+		$('body').css({
 			'background':'url(../pictures/' + weather + '.jpg)', 
 			'background-repeat': 'no-repeat',
 			'background-position': 'center',
 			'background-size': 'cover',
-			'height': '80vh',
-			'color': '#fff'
+			'height': '100vh'		
 		});
 			
 
@@ -126,13 +125,13 @@ var main = function(){
 	/**Function that converts temperature in celcius to fahrenheit**/
 	function celsiusToFahrenheit(){
 		var temperatureInCelsius = $('.temp').text();
-		var temperatureInFahrenheit = Math.floor((temperatureInCelsius * 9/5) + 32);
+		var temperatureInFahrenheit = Math.round((temperatureInCelsius * 9/5) + 32);
 		return temperatureInFahrenheit;
 	};
 
 	function fahrenheitToCelcius(){
 		var temperatureInFahrenheit = $('.temp').text();
-		var temperatureInCelsius = Math.floor((temperatureInFahrenheit - 32) * 5/9);
+		var temperatureInCelsius = Math.round((temperatureInFahrenheit - 32) * 5/9);
 		return temperatureInCelsius;
 	};
 
