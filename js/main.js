@@ -102,7 +102,7 @@ var main = function(){
 
 	}
 
-	/*Function to parse if there is a server error*/
+	/*Callback if there is a server error*/
 	function jsonError(){
 		var errorStatement = '<h2>Server Error<br />Try Again Later</h2>';
 		$('.city').html(errorStatement);
@@ -160,7 +160,19 @@ var main = function(){
 			//loader and the make the JSON API call after 2 seconds
 			var load = '<i style="font-size: 1em;" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span>';
 			setTimeout(function(){
-				$.getJSON(openWeatherAPI, parseJsonToHtml);
+				$.ajax({
+						url: openWeatherAPI, 
+						dataType: 'json',
+						crossDomain: true,  
+						success: parseJsonToHtml,
+						error: jsonError,
+						statusCode: {
+							404: function(){
+								$('.city').html('City not found');
+							}
+						},
+						method: 'GET'
+					});
 			}, 2000);	
 			$('.city').html(load);
 	}

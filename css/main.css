@@ -9,6 +9,16 @@ body {
 .container {
   max-width: 1200px; }
 
+.ui-autocomplete {
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  color: #fff;
+  list-style-type: none;
+  font-size: 16px;
+  width: 100px;
+  padding: 2px 5px 0;
+  font-weight: bold; }
+
 #header {
   margin-bottom: 10px; }
   #header h2 {
@@ -60,16 +70,6 @@ body {
     font-weight: bold; }
   #main h3 {
     font-weight: bold; }
-
-.ui-autocomplete {
-  background: rgba(0, 0, 0, 0.3);
-  opacity: 1;
-  color: #fff;
-  list-style-type: none;
-  font-size: 16px;
-  width: 100px;
-  padding: 2px 5px 0;
-  font-weight: bold; }
 
 #footer {
   margin-top: 4em;
