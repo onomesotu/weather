@@ -82,7 +82,7 @@ var main = function(){
 		});
 			
 
-		var degree = '<h1><span class="temp">' + temperature + '</span>&deg;<span class="unit">C</span></h1>',
+		var degree = '<span class="temp">' + temperature + '</span>&deg;<span class="unit">C</span>',
 			weather_description = weather + ', ' + description,
 			wind = '<p>Wind speed: ' + windSpeed + 'm/s</p>',
 			humidityValue = '<p>Humidity: ' + humidity + '&#37;</p>',
