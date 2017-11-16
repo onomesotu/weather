@@ -2,7 +2,6 @@ $font: 'Inconsolata', monospace;
 $white: #fff;
 $black: #000;
 $yellow: #BB6614;
-$siteColor: #fff;
 $uiColor: #a29896;
 $footerHoover: #3176B1;
 $placeholder: #66AFE9;
@@ -16,7 +15,6 @@ $drizzle: ('../pictures/Drizzle.jpg');
 $extreme: ('../pictures/Extreme.jpg');
 
 
-
 html, body,
 	margin : 0;
 	padding: 0;
@@ -28,16 +26,7 @@ body
 .container 
 	max-width: 1200px;
 
-.ui-autocomplete
-	background: rgba(0,0,0,0.3);
-	opacity: 1; 
-	color: $white;
-	list-style-type: none;
-	font-size: 16px;
-	width: 100px;
-	padding: 2px 5px 0;
-	font-weight: bold;
-
+//HEADER
 #header
 	margin-bottom: 10px;
 
@@ -69,12 +58,24 @@ body
 	.get_location
 		width: 300px;
 
+.ui-autocomplete
+	background: rgba(0,0,0,0.3);
+	opacity: 1; 
+	color: $white;
+	list-style-type: none;
+	font-size: 16px;
+	width: 100px;
+	padding: 2px 5px 0;
+	font-weight: bold;
+
+//MAIN
 #main 
 	color: $white;
+	margin-top: 10em;
+	font-weight: bold;
 
 	.weather_main
-		width: 40%;
-		margin-top: 5em;
+		width: 50%;
 		opacity: 1;
 		background: rgba(0,0,0,0.3);
 		padding: 2em;
@@ -82,23 +83,27 @@ body
 		font-weight: bold;
 	
 	.weather_info
-		width: 33%;
-		margin-top: 2em;
+		width: auto;
 		opacity: 1;
 		background: rgba(0,0,0,0.3);
 		font-size: 2em;
 		padding: 2em;
 		border-radius: 5px;
-		font-weight: bold;
 		float: right;
 
-	h1
-		font-size: 5em;
+	.city
+		font-size: 3em;
 		font-weight: bold;
+
+	.degree
+		font:
+			size: 7em;
+			weight: bold;
 
 	h3
-		font-weight: bold;
+		//font-weight: bold;
 
+//FOOTER
 #footer
 	margin-top: 4em;
 	text-align: center;
@@ -116,10 +121,19 @@ body
 			text-decoration: none;
 
 
+//MEDIA QUERIES
 
+$widthName: max-width;
+$firstBreakpoint: 1200px;
+$secondBreakpoint: 980px;
 
+@media screen and ($widthName : $firstBreakpoint) 
+  .form-inline
+  	margin-left: -10px;
+  	display: inline-block;
 
-
+//@media screen and ($widthName : $secondBreakpoint)
+	
 
 
 

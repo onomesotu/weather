@@ -9,16 +9,6 @@ body {
 .container {
   max-width: 1200px; }
 
-.ui-autocomplete {
-  background: rgba(0, 0, 0, 0.3);
-  opacity: 1;
-  color: #fff;
-  list-style-type: none;
-  font-size: 16px;
-  width: 100px;
-  padding: 2px 5px 0;
-  font-weight: bold; }
-
 #header {
   margin-bottom: 10px; }
   #header h2 {
@@ -45,30 +35,40 @@ body {
   #header .get_location {
     width: 300px; }
 
+.ui-autocomplete {
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  color: #fff;
+  list-style-type: none;
+  font-size: 16px;
+  width: 100px;
+  padding: 2px 5px 0;
+  font-weight: bold; }
+
 #main {
-  color: #fff; }
+  color: #fff;
+  margin-top: 10em;
+  font-weight: bold; }
   #main .weather_main {
-    width: 40%;
-    margin-top: 5em;
+    width: 50%;
     opacity: 1;
     background: rgba(0, 0, 0, 0.3);
     padding: 2em;
     border-radius: 5px;
     font-weight: bold; }
   #main .weather_info {
-    width: 33%;
-    margin-top: 2em;
+    width: auto;
     opacity: 1;
     background: rgba(0, 0, 0, 0.3);
     font-size: 2em;
     padding: 2em;
     border-radius: 5px;
-    font-weight: bold;
     float: right; }
-  #main h1 {
-    font-size: 5em;
+  #main .city {
+    font-size: 3em;
     font-weight: bold; }
-  #main h3 {
+  #main .degree {
+    font-size: 7em;
     font-weight: bold; }
 
 #footer {
@@ -85,3 +85,8 @@ body {
       text-decoration: underline; }
     #footer .footer__hover:visited {
       text-decoration: none; }
+
+@media screen and (max-width: 1200px) {
+  .form-inline {
+    margin-left: -10px;
+    display: inline-block; } }
