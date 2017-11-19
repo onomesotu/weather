@@ -19,7 +19,8 @@ html, body,
 	margin : 0;
 	padding: 0;
 
-body 
+body
+	height: 100%; 
 	font: 100% $font;
 	transition: background 1s linear;
 
@@ -30,9 +31,8 @@ body
 #header
 	margin-bottom: 10px;
 
-	h2
+	h1
 		text-align: center;
-		font-size: 45px;
 		color: $black;
 		text-transform: uppercase;
 		font-weight: bold;
@@ -48,7 +48,7 @@ body
 			font-weight: bold;
 			
 	.btn 
-		width: 120px;
+		width: 100px;
 		&:hover 
 			background-color: $black;
 			color: $white;
@@ -56,7 +56,7 @@ body
 			transition: all .5s linear;
 	
 	.get_location
-		width: 300px;
+		width: 200px;
 
 .ui-autocomplete
 	background: rgba(0,0,0,0.3);
@@ -100,14 +100,12 @@ body
 			size: 7em;
 			weight: bold;
 
-	h3
-		//font-weight: bold;
 
 //FOOTER
 #footer
-	margin-top: 4em;
+	margin-top: 10em;
 	text-align: center;
-	font-size: 2.5em;
+	font-size: 1.5em;
 	color: $white;
 	font-weight: bold;
 
@@ -125,15 +123,37 @@ body
 
 $widthName: max-width;
 $firstBreakpoint: 1200px;
-$secondBreakpoint: 980px;
+$secondBreakpoint: 995px;
+$thirdBreakpoint: 767px;
+$fourthBreakpoint: 540px;
 
 @media screen and ($widthName : $firstBreakpoint) 
-  .form-inline
-  	margin-left: -10px;
-  	display: inline-block;
+  	.form-inline
+  		margin-left: -10px;
+  		display: inline-block;
 
-//@media screen and ($widthName : $secondBreakpoint)
-	
+@media screen and ($widthName : $secondBreakpoint)
+	.form-inline
+		margin-left: -20px;
+
+@media screen and ($widthName : $thirdBreakpoint)
+	.form-group
+		display: inline-block;
+		vertical-align: top;
+	.get_location
+		margin-top: 10px;
+
+@media screen and ($widthName: $fourthBreakpoint)
+	#main 
+		.weather_main
+			width: 95%;
+			margin-left: 10px;
+
+		.weather_info
+			width: 95%;
+			margin: 10px 10px 0 0;
+
+
 
 
 
