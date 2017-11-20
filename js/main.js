@@ -99,7 +99,6 @@ var main = function(){
 		$('.humidity').html(humidityValue);
 		$('.sunrise').html(sun_rise);
 		$('.sunset').html(sun_set);
-
 	}
 
 	/*Callback if there is a server error*/
