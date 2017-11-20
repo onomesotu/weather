@@ -78,18 +78,18 @@ var main = function(){
 			'background-repeat': 'no-repeat',
 			'background-position': 'center',
 			'background-size': 'cover',
-			'height': 'auto'		
+			'height': '100%'		
 		});
 			
 
 		var degree = '<span class="temp">' + temperature + '</span>&deg;<span class="unit">C</span>',
 			weather_description = weather + ', ' + description,
-			wind = '<p>Wind speed: ' + windSpeed + 'm/s</p>',
-			humidityValue = '<p>Humidity: ' + humidity + '&#37;</p>',
-			pressureValue = '<p>Pressure: ' + pressure + 'hPa</p>';
-			sun_rise = '<p>Sunrise: ' + convertUnixTime(sunrise); + '</p>',
-			sun_set = '<p>Sunset: ' + convertUnixTime(sunset); + '</p>';
-	
+			wind = 'Wind speed: ' + windSpeed + 'm/s',
+			humidityValue = 'Humidity: ' + humidity + '&#37;',
+			pressureValue = 'Pressure: ' + pressure + 'hPa';
+		var	sun_rise = 'Sunrise: ' + convertUnixTime(sunrise);;
+		var	sun_set = 'Sunset: ' + convertUnixTime(sunset);; 
+
 			
 		$('.city').html(cityName + ', ' + country);
 		$('.description').html(weather_description);
