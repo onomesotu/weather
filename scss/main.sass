@@ -58,7 +58,12 @@ body
 	.get_location
 		width: 200px;
 
+	.header__image
+		width: 40px;
+		
+
 .ui-autocomplete
+	//position: absolute;
 	background: rgba(0,0,0,0.3);
 	opacity: 1; 
 	color: $white;
@@ -67,6 +72,11 @@ body
 	width: 100px;
 	padding: 2px 5px 0;
 	font-weight: bold;
+	max-height: 100px;
+	z-index: 100 !important;
+	overflow-y: auto;
+	overflow-x: hidden;
+
 
 //MAIN
 #main 
