@@ -74,7 +74,7 @@ var main = function(){
 			sunset = json.sys['sunset'];
 		
 		$('body').css({
-			'background':'url(https://github.com/onomesotu/weather/tree/master/pictures/' + weather + '.jpg)', 
+			'background':'url(https://github.com/onomesotu/weather/blob/master/pictures/' + weather + '.jpg)', 
 			'background-repeat': 'no-repeat',
 			'background-position': 'center',
 			'background-size': 'cover',
