@@ -42,6 +42,7 @@ var main = function(){
 	});
 	$('#searchButton').on('click', getWeather);
 	$('#header').on('click', '.get_location', getLocation);
+	$('.main_time').html(getTodaysDate);
 
 	$('.temperatureUnit').on('click', function(e){
 		e.preventDefault();
@@ -68,7 +69,7 @@ var main = function(){
 			description = json.weather[0]['description'],
 			temperature = Math.round(json.main['temp'] - kelvin),
 			humidity = json.main['humidity'],
-			pressure = json.main['pressure'],
+			pressure = Math.round(json.main['pressure']),
 			windSpeed = json.wind['speed'],
 			sunrise = json.sys['sunrise'],
 			sunset = json.sys['sunset'];
@@ -84,11 +85,11 @@ var main = function(){
 
 		var degree = '<span class="temp">' + temperature + '</span>&deg;<span class="unit">C</span>',
 			weather_description = weather + ', ' + description,
-			wind = 'Wind speed: ' + windSpeed + 'm/s',
-			humidityValue = 'Humidity: ' + humidity + '&#37;',
-			pressureValue = 'Pressure: ' + pressure + 'hPa';
-		var	sun_rise = 'Sunrise: ' + convertUnixTime(sunrise);;
-		var	sun_set = 'Sunset: ' + convertUnixTime(sunset);; 
+			wind = windSpeed + 'm/s',
+			humidityValue = humidity + '&#37;',
+			pressureValue = pressure + 'hPa';
+		var	sun_rise = convertUnixTime(sunrise);;
+		var	sun_set = convertUnixTime(sunset);; 
 
 			
 		$('.city').html(cityName + ', ' + country);
@@ -134,6 +135,10 @@ var main = function(){
 		return temperatureInCelsius;
 	};
 
+	function getTodaysDate(){
+		var date = new Date();
+		return date.toString().substr(0, 15);
+	};
 
 	/****API CALLS******/
 	//Preset API CALL
