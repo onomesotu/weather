@@ -14,7 +14,7 @@ body {
   max-width: 1200px; }
 
 #header {
-  margin-bottom: 10px; }
+  margin-bottom: 60px; }
   #header h1 {
     text-align: center;
     color: #000;
@@ -54,24 +54,36 @@ body {
   overflow-y: auto;
   overflow-x: hidden; }
 
+#time {
+  margin-top: 50px; }
+  #time .main_time {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1em;
+    border-radius: 5px;
+    width: auto;
+    color: #fff;
+    font-size: 2em;
+    font-weight: bold; }
+
 #main {
   color: #fff;
   margin-top: 10em;
   font-weight: bold; }
   #main .weather_main {
-    width: 50%;
     opacity: 1;
     background: rgba(0, 0, 0, 0.3);
     padding: 2em;
     border-radius: 5px;
+    width: 50%;
     font-weight: bold; }
   #main .weather_info {
-    width: auto;
     opacity: 1;
     background: rgba(0, 0, 0, 0.3);
-    font-size: 2em;
     padding: 2em;
     border-radius: 5px;
+    width: auto;
+    font-size: 2em;
     float: right; }
   #main .city {
     font-size: 3em;
@@ -79,6 +91,10 @@ body {
   #main .degree {
     font-size: 7em;
     font-weight: bold; }
+  #main table {
+    margin: 0 auto; }
+    #main table td {
+      padding: 7px; }
 
 #footer {
   margin-top: 18em;

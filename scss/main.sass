@@ -5,7 +5,11 @@ $yellow: #BB6614;
 $uiColor: #a29896;
 $footerHoover: #3176B1;
 $placeholder: #66AFE9;
-
+@mixin div_background 
+	opacity: 1;
+	background: rgba(0,0,0,0.3);
+	padding: 2em;
+	border-radius: 5px;
 
 html,
 	margin : 0;
@@ -24,7 +28,7 @@ body
 
 //HEADER
 #header
-	margin-bottom: 10px;
+	margin-bottom: 60px;
 
 	h1
 		text-align: center;
@@ -73,6 +77,20 @@ body
 	overflow-x: hidden;
 
 
+//TIME
+#time
+	margin-top: 50px;
+
+	.main_time
+		opacity: 1;
+		background: rgba(0,0,0,0.3);
+		padding: 1em;
+		border-radius: 5px;
+		width: auto;
+		color: $white;
+		font-size: 2em;
+		font-weight: bold;
+
 //MAIN
 #main 
 	color: $white;
@@ -80,20 +98,14 @@ body
 	font-weight: bold;
 
 	.weather_main
+		@include div_background;
 		width: 50%;
-		opacity: 1;
-		background: rgba(0,0,0,0.3);
-		padding: 2em;
-		border-radius: 5px;
 		font-weight: bold;
 	
 	.weather_info
+		@include div_background;
 		width: auto;
-		opacity: 1;
-		background: rgba(0,0,0,0.3);
 		font-size: 2em;
-		padding: 2em;
-		border-radius: 5px;
 		float: right;
 
 	.city
@@ -104,7 +116,12 @@ body
 		font:
 			size: 7em;
 			weight: bold;
+	
+	table
+		margin: 0 auto;
 
+		td
+			padding: 7px;
 
 //FOOTER
 #footer
