@@ -5,9 +5,9 @@ var browserSync = require('browser-sync').create();
 
 
 gulp.task('sass', function(){
-	return gulp.src('pages/weather/scss/*.sass')
+	return gulp.src('./scss/*.sass')
 	.pipe(sass())
-	.pipe(gulp.dest('pages/weather/css'))
+	.pipe(gulp.dest('./css'))
 	.pipe(browserSync.reload({
 		stream: true
 	}));
@@ -16,14 +16,14 @@ gulp.task('sass', function(){
 gulp.task('browserSync', function(){
 	browserSync.init({
 		server: {
-			baseDir: 'pages/weather'
+			baseDir: './'
 		},
 	})
 });
 
 gulp.task('watch',['browserSync', 'sass'], function(){
-	gulp.watch('pages/weather/scss/*.sass', ['sass']);
-	gulp.watch('pages/weather/js/*.js', browserSync.reload);
-	gulp.watch('pages/weather/index.html', browserSync.reload);
+	gulp.watch('./scss/*.sass', ['sass']);
+	gulp.watch('./js/*.js', browserSync.reload);
+	gulp.watch('./index.html', browserSync.reload);
 });
 
